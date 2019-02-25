@@ -19,4 +19,6 @@ generator.vue({
     output:  "resources/js/vuegen.js"
 });
 
+mix.copy('resources/img', 'public/img');
+
 mix.js('resources/js/vuegen.js', 'public/js');

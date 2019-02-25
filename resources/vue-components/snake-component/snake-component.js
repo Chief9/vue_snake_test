@@ -10,12 +10,13 @@ export default {
             coordinate_y: null,
             snake_head_location: null,
             snake_skin: false,
-            snake_length: 2,
+            snake_length: 5,
             snake_history: [],
             dead_snake: false,
             fruit_amount: 2,
             current_fruit: null,
-            snake_speed: 100
+            snake_speed: 100,
+            input_set: false
 
         };
     },
@@ -29,6 +30,8 @@ export default {
 
         snakeCurrentLocation: function ()
         {
+            this.input_set = false;
+
             this.snakeOutOfBounds();
 
             //snake head
@@ -155,27 +158,32 @@ export default {
     mounted()
     {
         setEvent: {
+
             window.addEventListener("keydown", e =>
             {
-                switch ( e.keyCode )
-                {
-                    case 37:
-                        if ( this.pressed_key === "Right" || this.dead_snake === true) return false;
-                        this.pressed_key = "Left";
-                        break;
-                    case 38:
-                        if ( this.pressed_key === "Down" || this.dead_snake === true) return false;
-                        this.pressed_key = "Up";
-                        break;
-                    case 39:
-                        if ( this.pressed_key === "Left" || this.dead_snake === true) return false;
-                        this.pressed_key = "Right";
-                        break;
-                    case 40:
-                        if ( this.pressed_key === "Up" || this.dead_snake === true) return false;
-                        this.pressed_key = "Down";
-                        break;
+                if(!this.input_set){
+                    switch ( e.keyCode )
+                    {
+                        case 37:
+                            if ( this.pressed_key === "Right" || this.dead_snake === true) return false;
+                            this.pressed_key = "Left";
+                            break;
+                        case 38:
+                            if ( this.pressed_key === "Down" || this.dead_snake === true) return false;
+                            this.pressed_key = "Up";
+                            break;
+                        case 39:
+                            if ( this.pressed_key === "Left" || this.dead_snake === true) return false;
+                            this.pressed_key = "Right";
+                            break;
+                        case 40:
+                            if ( this.pressed_key === "Up" || this.dead_snake === true) return false;
+                            this.pressed_key = "Down";
+                            break;
+                    }
+                this.input_set = true;
                 }
+
             });
         }
         this.snakeStartLocation();

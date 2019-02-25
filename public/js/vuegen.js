@@ -106,12 +106,13 @@ __webpack_require__.r(__webpack_exports__);
       coordinate_y: null,
       snake_head_location: null,
       snake_skin: false,
-      snake_length: 2,
+      snake_length: 5,
       snake_history: [],
       dead_snake: false,
       fruit_amount: 2,
       current_fruit: null,
-      snake_speed: 100
+      snake_speed: 100,
+      input_set: false
     };
   },
   methods: {
@@ -120,6 +121,7 @@ __webpack_require__.r(__webpack_exports__);
       this.coordinate_y = Math.ceil(this.arena_width / 2);
     },
     snakeCurrentLocation: function snakeCurrentLocation() {
+      this.input_set = false;
       this.snakeOutOfBounds(); //snake head
 
       this.snake_head_location = this.coordinate_x + "." + this.coordinate_y;
@@ -220,26 +222,30 @@ __webpack_require__.r(__webpack_exports__);
 
     setEvent: {
       window.addEventListener("keydown", function (e) {
-        switch (e.keyCode) {
-          case 37:
-            if (_this2.pressed_key === "Right" || _this2.dead_snake === true) return false;
-            _this2.pressed_key = "Left";
-            break;
+        if (!_this2.input_set) {
+          switch (e.keyCode) {
+            case 37:
+              if (_this2.pressed_key === "Right" || _this2.dead_snake === true) return false;
+              _this2.pressed_key = "Left";
+              break;
 
-          case 38:
-            if (_this2.pressed_key === "Down" || _this2.dead_snake === true) return false;
-            _this2.pressed_key = "Up";
-            break;
+            case 38:
+              if (_this2.pressed_key === "Down" || _this2.dead_snake === true) return false;
+              _this2.pressed_key = "Up";
+              break;
 
-          case 39:
-            if (_this2.pressed_key === "Left" || _this2.dead_snake === true) return false;
-            _this2.pressed_key = "Right";
-            break;
+            case 39:
+              if (_this2.pressed_key === "Left" || _this2.dead_snake === true) return false;
+              _this2.pressed_key = "Right";
+              break;
 
-          case 40:
-            if (_this2.pressed_key === "Up" || _this2.dead_snake === true) return false;
-            _this2.pressed_key = "Down";
-            break;
+            case 40:
+              if (_this2.pressed_key === "Up" || _this2.dead_snake === true) return false;
+              _this2.pressed_key = "Down";
+              break;
+          }
+
+          _this2.input_set = true;
         }
       });
     }
@@ -265,7 +271,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "div > header {\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  z-index: 5;\n  position: absolute;\n}\ndiv > header > p {\n  color: red;\n}\ndiv > main {\n  display: inline-grid;\n}\ndiv > main > div {\n  background-color: grey;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n}\ndiv > main > div.snake_skin {\n  background-color: black;\n}\ndiv > main > div.snake_fruit {\n  background-color: blue;\n}", ""]);
+exports.push([module.i, "div > header {\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  z-index: 5;\n}\ndiv > header > img {\n  cursor: pointer;\n}\ndiv > header > p {\n  color: red;\n}\ndiv > main {\n  display: inline-grid;\n}\ndiv > main > div {\n  background-color: grey;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n}\ndiv > main > div.snake_skin {\n  background-color: black;\n}\ndiv > main > div.snake_fruit {\n  background-color: blue;\n}", ""]);
 
 // exports
 
@@ -917,7 +923,11 @@ var render = function() {
     "div",
     [
       _vm.dead_snake
-        ? _c("header", [_c("p", [_vm._v("Snak ded?")])])
+        ? _c("header", [
+            _c("img", {
+              attrs: { onclick: "window.location.reload()", src: "img/TBC.png" }
+            })
+          ])
         : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.arena_width, function(m) {
@@ -1067,7 +1077,7 @@ Vue.component('snake-component', _vue_components_snake_component_snake_component
 /*!**********************************************************************************************!*\
   !*** ./resources/vue-components/snake-component/snake-component.js?vue&type=script&lang=js& ***!
   \**********************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1097,15 +1107,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************************!*\
   !*** ./resources/vue-components/snake-component/snake-component.vue ***!
   \**********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _snake_component_vue_vue_type_template_id_f098d992___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snake-component.vue?vue&type=template&id=f098d992& */ "./resources/vue-components/snake-component/snake-component.vue?vue&type=template&id=f098d992&");
 /* harmony import */ var _snake_component_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./snake-component.js?vue&type=script&lang=js& */ "./resources/vue-components/snake-component/snake-component.js?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _snake_component_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _snake_component_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _snake_component_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./snake-component.scss?vue&type=style&index=0&lang=scss& */ "./resources/vue-components/snake-component/snake-component.scss?vue&type=style&index=0&lang=scss&");
+/* empty/unused harmony star reexport *//* harmony import */ var _snake_component_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./snake-component.scss?vue&type=style&index=0&lang=scss& */ "./resources/vue-components/snake-component/snake-component.scss?vue&type=style&index=0&lang=scss&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 

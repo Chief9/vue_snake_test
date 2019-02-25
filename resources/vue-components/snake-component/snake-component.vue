@@ -1,7 +1,7 @@
 <template>
     <div>
         <header v-if="dead_snake">
-            <p>Snak ded?</p>
+            <img onclick="window.location.reload()" src="img/TBC.png">
         </header>
         <main v-for="m in arena_width" :id="m">
             <div v-for="n in arena_width" :id="m + '.' + n"></div>
