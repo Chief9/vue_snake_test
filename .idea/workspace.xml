@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="804452a0-47ce-423d-bca6-ef9ff54e615d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/img/TBC.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/vuegen.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/vuegen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
-    </list>
+    <list default="true" id="804452a0-47ce-423d-bca6-ef9ff54e615d" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,8 +26,8 @@
       <file leaf-file-name="snake-component.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+            <state relative-caret-position="3332">
+              <caret line="196" column="2" lean-forward="true" selection-start-line="196" selection-start-column="2" selection-end-line="196" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -43,8 +35,8 @@
       <file leaf-file-name="snake-component.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+            <state relative-caret-position="424">
+              <caret line="25" column="40" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -297,12 +289,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550668954265</updated>
-      <workItem from="1550668955593" duration="77451000" />
+      <workItem from="1550668955593" duration="79136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77451000" />
+    <option name="totallyTimeSpent" value="79136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
@@ -410,8 +402,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        <state relative-caret-position="424">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -424,8 +416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        <state relative-caret-position="3332">
+          <caret line="196" column="2" lean-forward="true" selection-start-line="196" selection-start-column="2" selection-end-line="196" selection-end-column="2" />
         </state>
       </provider>
     </entry>
