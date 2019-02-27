@@ -86,6 +86,321 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./resources/vue-components/snake-ai/snake-ai.js?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./resources/vue-components/snake-ai/snake-ai.js?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {},
+  data: function data() {
+    return {
+      pressed_key: "",
+      arena_width: 25,
+      value: null,
+      coordinate_x: null,
+      coordinate_y: null,
+      snake_head_location: null,
+      snake_skin: false,
+      snake_length: 5,
+      snake_history: [],
+      dead_snake: false,
+      fruit_amount: 2,
+      current_fruit: null,
+      snake_speed: 100,
+      input_set: false,
+      fruit_location: [],
+      selected_fruit: null,
+      closest_fruit: null,
+      current_snake_length: null
+    };
+  },
+  methods: {
+    snakeStartLocation: function snakeStartLocation() {
+      this.coordinate_x = Math.ceil(this.arena_width / 2);
+      this.coordinate_y = Math.ceil(this.arena_width / 2);
+    },
+    locateFruitAI: function locateFruitAI(x, y) {
+      var fruit_location = this.fruit_location.slice(this.fruit_location.length - this.fruit_amount, this.fruit_location.length);
+      var closets_fruit = this.arena_width;
+      var selected_fruit = [];
+
+      if (this.selected_fruit != null) {
+        var fruit_spot = this.selected_fruit[0] + "." + this.selected_fruit[1];
+
+        if (this.snake_head_location === fruit_spot) {
+          for (var i = 0; i < this.fruit_location.length - 1; i++) {
+            if (this.selected_fruit === this.fruit_location[i]) {
+              this.fruit_location.splice(i, 1);
+            }
+          }
+        }
+      }
+
+      fruit_location.forEach(function (fruit) {
+        var difference_y = Math.abs(fruit[1]) - Math.abs(y);
+        var difference_x = Math.abs(fruit[0]) - Math.abs(x);
+        var absolute_difference = Math.abs(difference_x) + Math.abs(difference_y);
+
+        if (absolute_difference < closets_fruit) {
+          closets_fruit = absolute_difference;
+          selected_fruit = fruit;
+        }
+      });
+      this.selected_fruit = selected_fruit;
+    },
+    snakeCurrentLocation: function snakeCurrentLocation() {
+      this.input_set = false;
+      this.snakeOutOfBounds(); //snake head
+
+      this.snake_head_location = this.coordinate_x + "." + this.coordinate_y;
+      var snakeCurrently = document.getElementById(this.snake_head_location);
+      this.locateFruitAI(this.coordinate_x, this.coordinate_y); //snake no head losestate
+
+      if (snakeCurrently.classList.contains("snake_skin")) {
+        this.pressed_key = "snak heaven";
+        this.dead_snake = true;
+      } //snake eating
+
+
+      if (snakeCurrently.classList.contains("snake_fruit")) {
+        this.snake_length++;
+        this.current_fruit--;
+        this.fruit_spawner();
+        this.locateFruitAI();
+        snakeCurrently.classList.remove("snake_fruit");
+      } //snake travel history
+
+
+      this.snakeHistory(); //snake tail
+
+      var snake_tail = this.snake_history.slice(this.snake_history.length - this.snake_length - 1, this.snake_history.length);
+      this.current_snake_length = snake_tail;
+      var snakeTailCurrently = document.getElementById(snake_tail[0]);
+      snakeCurrently.classList.add("snake_skin");
+
+      if (this.snake_history.length > this.snake_length) {
+        snakeTailCurrently.classList.remove("snake_skin");
+      }
+    },
+    snakeHistory: function snakeHistory() {
+      this.snake_history.push(this.snake_head_location);
+    },
+    snakeOutOfBounds: function snakeOutOfBounds() {
+      if (this.coordinate_x > this.arena_width) {
+        this.coordinate_x = 1;
+      }
+
+      if (this.coordinate_y > this.arena_width) {
+        this.coordinate_y = 1;
+      }
+
+      if (this.coordinate_x === 0) {
+        this.coordinate_x = this.arena_width;
+      }
+
+      if (this.coordinate_y === 0) {
+        this.coordinate_y = this.arena_width;
+      }
+    },
+    fruit_spawner: function fruit_spawner() {
+      if (this.current_fruit < this.fruit_amount) {
+        var fruit_coordinate_x = Math.floor(Math.random() * this.arena_width + 1);
+        var fruit_coordinate_y = Math.floor(Math.random() * this.arena_width + 1);
+        var fruit_id = fruit_coordinate_x + "." + fruit_coordinate_y;
+        var fruit_location = document.getElementById(fruit_id);
+
+        if (!fruit_location.classList.contains("snake_skin") && !fruit_location.classList.contains("snake_fruit")) {
+          fruit_location.classList.add("snake_fruit");
+          this.current_fruit++;
+          this.fruit_location.push([fruit_coordinate_x, fruit_coordinate_y]);
+        }
+
+        this.fruit_spawner();
+      }
+    },
+    moveSnakeAI: function moveSnakeAI() {
+      var _this = this;
+
+      setInterval(function () {
+        var down_block = false;
+        var up_block = false;
+        var left_block = false;
+        var right_block = false;
+        var coordinate_x = _this.coordinate_x;
+        var coordinate_y = _this.coordinate_y;
+
+        _this.current_snake_length.forEach(function (location) {
+          if (location === coordinate_x + "." + (coordinate_y + 1)) {
+            down_block = true;
+          } else if (location === coordinate_x + "." + (coordinate_y - 1)) {
+            up_block = true;
+          } else if (location === coordinate_x - 1 + "." + coordinate_y) {
+            left_block = true;
+          } else if (location === coordinate_x + 1 + "." + coordinate_y) {
+            right_block = true;
+          }
+        });
+
+        if (_this.input_set === false) ;
+        {
+          console.log(down_block, up_block, left_block, right_block);
+
+          if (_this.coordinate_y < _this.selected_fruit[1] && _this.pressed_key !== "Up" && down_block === false) {
+            _this.coordinate_y = _this.coordinate_y + 1;
+            _this.pressed_key = "Down";
+
+            _this.snakeCurrentLocation();
+          } else if (_this.coordinate_y > _this.selected_fruit[1] && _this.pressed_key !== "Down" && up_block === false) {
+            _this.coordinate_y = _this.coordinate_y - 1;
+            _this.pressed_key = "Up";
+
+            _this.snakeCurrentLocation();
+          } else if (_this.coordinate_x > _this.selected_fruit[0] && _this.pressed_key !== "Right" && left_block === false) {
+            _this.coordinate_x = _this.coordinate_x - 1;
+            _this.pressed_key = "Left";
+
+            _this.snakeCurrentLocation();
+          } else if (_this.coordinate_x < _this.selected_fruit[0] && _this.pressed_key !== "Left" && right_block === false) {
+            _this.coordinate_x = _this.coordinate_x + 1;
+            _this.pressed_key = "Right";
+
+            _this.snakeCurrentLocation();
+          } else if (_this.selected_fruit.length === 0) {
+            switch (_this.pressed_key) {
+              case "Down":
+                _this.coordinate_y = _this.coordinate_y + 1;
+
+                _this.snakeCurrentLocation();
+
+                break;
+
+              case "Up":
+                _this.coordinate_y = _this.coordinate_y - 1;
+
+                _this.snakeCurrentLocation();
+
+                break;
+
+              case "Left":
+                _this.coordinate_x = _this.coordinate_x - 1;
+
+                _this.snakeCurrentLocation();
+
+                break;
+
+              case "Right":
+                _this.coordinate_x = _this.coordinate_x + 1;
+
+                _this.snakeCurrentLocation();
+
+                break;
+            }
+
+            _this.input_set = false;
+          } else {
+            if (_this.pressed_key === "Up") {
+              _this.coordinate_y = _this.coordinate_y - 1;
+              _this.input_set = false;
+            }
+
+            if (_this.pressed_key === "Down") {
+              _this.coordinate_y = _this.coordinate_y + 1;
+              _this.input_set = false;
+            }
+
+            if (_this.pressed_key === "Left") {
+              _this.coordinate_x = _this.coordinate_x - 1;
+              _this.input_set = false;
+            }
+
+            if (_this.pressed_key === "Right") {
+              _this.coordinate_x = _this.coordinate_x + 1;
+              _this.input_set = false;
+            }
+          }
+        }
+        _this.input_set = true;
+      }, this.snake_speed);
+    },
+    moveSnake: function moveSnake() {
+      var _this2 = this;
+
+      setInterval(function () {
+        if (_this2.pressed_key === "Down") {
+          _this2.coordinate_y = _this2.coordinate_y + 1;
+
+          _this2.snakeCurrentLocation();
+        }
+
+        if (_this2.pressed_key === "Up") {
+          _this2.coordinate_y = _this2.coordinate_y - 1;
+
+          _this2.snakeCurrentLocation();
+        }
+
+        if (_this2.pressed_key === "Left") {
+          _this2.coordinate_x = _this2.coordinate_x - 1;
+
+          _this2.snakeCurrentLocation();
+        }
+
+        if (_this2.pressed_key === "Right") {
+          _this2.coordinate_x = _this2.coordinate_x + 1;
+
+          _this2.snakeCurrentLocation();
+        }
+      }, this.snake_speed);
+    }
+  },
+  computed: {},
+  mounted: function mounted() {
+    var _this3 = this;
+
+    setEvent: {
+      window.addEventListener("keydown", function (e) {
+        if (!_this3.input_set) {
+          switch (e.keyCode) {
+            case 37:
+              if (_this3.pressed_key === "Right" || _this3.dead_snake === true) return false;
+              _this3.pressed_key = "Left";
+              break;
+
+            case 38:
+              if (_this3.pressed_key === "Down" || _this3.dead_snake === true) return false;
+              _this3.pressed_key = "Up";
+              break;
+
+            case 39:
+              if (_this3.pressed_key === "Left" || _this3.dead_snake === true) return false;
+              _this3.pressed_key = "Right";
+              break;
+
+            case 40:
+              if (_this3.pressed_key === "Up" || _this3.dead_snake === true) return false;
+              _this3.pressed_key = "Down";
+              break;
+          }
+
+          _this3.input_set = true;
+        }
+      });
+    }
+
+    this.snakeStartLocation();
+    this.fruit_spawner();
+    this.snakeCurrentLocation(); // this.moveSnake();
+
+    this.moveSnakeAI();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./resources/vue-components/snake-component/snake-component.js?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./resources/vue-components/snake-component/snake-component.js?vue&type=script&lang=js& ***!
@@ -259,6 +574,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "div > header {\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  z-index: 5;\n}\ndiv > header > img {\n  cursor: pointer;\n}\ndiv > header > p {\n  color: red;\n}\ndiv > main {\n  display: inline-grid;\n}\ndiv > main > div {\n  background-color: grey;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n}\ndiv > main > div.snake_skin {\n  background-color: black;\n}\ndiv > main > div.snake_fruit {\n  background-color: blue;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./resources/vue-components/snake-component/snake-component.scss?vue&type=style&index=0&lang=scss&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./resources/vue-components/snake-component/snake-component.scss?vue&type=style&index=0&lang=scss& ***!
@@ -362,6 +696,36 @@ function toComment(sourceMap) {
 	return '/*# ' + data + ' */';
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/lib/loader.js??ref--7-3!./snake-ai.scss?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -904,6 +1268,53 @@ module.exports = function (css) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/vue-components/snake-ai/snake-ai.vue?vue&type=template&id=3d05d835&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/vue-components/snake-ai/snake-ai.vue?vue&type=template&id=3d05d835& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm.dead_snake
+        ? _c("header", [
+            _c("img", {
+              attrs: { onclick: "window.location.reload()", src: "img/TBC.png" }
+            })
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.arena_width, function(m) {
+        return _c(
+          "main",
+          { attrs: { id: m } },
+          _vm._l(_vm.arena_width, function(n) {
+            return _c("div", { attrs: { id: m + "." + n } })
+          }),
+          0
+        )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/vue-components/snake-component/snake-component.vue?vue&type=template&id=f098d992&":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/vue-components/snake-component/snake-component.vue?vue&type=template&id=f098d992& ***!
@@ -1067,9 +1478,99 @@ function normalizeComponent (
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vue_components_snake_component_snake_component_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vue-components/snake-component/snake-component.vue */ "./resources/vue-components/snake-component/snake-component.vue");
+/* harmony import */ var _vue_components_snake_ai_snake_ai_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vue-components/snake-ai/snake-ai.vue */ "./resources/vue-components/snake-ai/snake-ai.vue");
+/* harmony import */ var _vue_components_snake_component_snake_component_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vue-components/snake-component/snake-component.vue */ "./resources/vue-components/snake-component/snake-component.vue");
 
-Vue.component('snake-component', _vue_components_snake_component_snake_component_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.component('snake-ai', _vue_components_snake_ai_snake_ai_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+Vue.component('snake-component', _vue_components_snake_component_snake_component_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
+/***/ "./resources/vue-components/snake-ai/snake-ai.js?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/vue-components/snake-ai/snake-ai.js?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_snake_ai_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!./snake-ai.js?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./resources/vue-components/snake-ai/snake-ai.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_snake_ai_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss& ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_snake_ai_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/lib/loader.js??ref--7-3!./snake-ai.scss?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_snake_ai_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_snake_ai_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_snake_ai_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_snake_ai_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_snake_ai_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/vue-components/snake-ai/snake-ai.vue":
+/*!********************************************************!*\
+  !*** ./resources/vue-components/snake-ai/snake-ai.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _snake_ai_vue_vue_type_template_id_3d05d835___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snake-ai.vue?vue&type=template&id=3d05d835& */ "./resources/vue-components/snake-ai/snake-ai.vue?vue&type=template&id=3d05d835&");
+/* harmony import */ var _snake_ai_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./snake-ai.js?vue&type=script&lang=js& */ "./resources/vue-components/snake-ai/snake-ai.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _snake_ai_scss_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./snake-ai.scss?vue&type=style&index=0&lang=scss& */ "./resources/vue-components/snake-ai/snake-ai.scss?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _snake_ai_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _snake_ai_vue_vue_type_template_id_3d05d835___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _snake_ai_vue_vue_type_template_id_3d05d835___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/vue-components/snake-ai/snake-ai.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/vue-components/snake-ai/snake-ai.vue?vue&type=template&id=3d05d835&":
+/*!***************************************************************************************!*\
+  !*** ./resources/vue-components/snake-ai/snake-ai.vue?vue&type=template&id=3d05d835& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_snake_ai_vue_vue_type_template_id_3d05d835___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./snake-ai.vue?vue&type=template&id=3d05d835& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/vue-components/snake-ai/snake-ai.vue?vue&type=template&id=3d05d835&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_snake_ai_vue_vue_type_template_id_3d05d835___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_snake_ai_vue_vue_type_template_id_3d05d835___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

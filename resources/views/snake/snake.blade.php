@@ -10,9 +10,13 @@
     </head>
     <body>
         <div id="app">
-            <snake-component>
+{{--            <snake-component>
 
-            </snake-component>
+            </snake-component>--}}
+
+            <snake-ai>
+
+            </snake-ai>
         </div>
     </body>
     <script type="text/javascript">
@@ -24,3 +28,9 @@
         })
     </script>
 </html>
+<script>
+    import SnakeAi from "../../vue-components/snake-ai/snake-ai";
+    export default {
+        components: { SnakeAi }
+    }
+</script>

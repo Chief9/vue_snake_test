@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="804452a0-47ce-423d-bca6-ef9ff54e615d" name="Default" comment="" />
+    <list default="true" id="804452a0-47ce-423d-bca6-ef9ff54e615d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/vuegen.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/vuegen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/vuegen.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/vuegen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/snake/snake.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/snake/snake.blade.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,38 +22,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="snake-component.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.vue">
+      <file leaf-file-name="snake-ai.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
+            <state relative-caret-position="-2640">
+              <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="snake-component.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.js">
+      <file leaf-file-name="snake-ai.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3332">
-              <caret line="196" column="2" lean-forward="true" selection-start-line="196" selection-start-column="2" selection-end-line="196" selection-end-column="2" />
+            <state relative-caret-position="204">
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="snake-component.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.scss">
+      <file leaf-file-name="snake-ai.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="25" column="40" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="snake.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/snake/snake.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
+            <state relative-caret-position="374">
+              <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -64,9 +63,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>has</find>
       <find>@if (Route::has('login')) @auth HOME @else LOGIN @if (Route::has('register'))w REGISTER @endif @endauth @endif</find>
-      <find>console</find>
       <find>elemen</find>
       <find>snake_head_location</find>
       <find>fruit_spa</find>
@@ -75,6 +72,16 @@
       <find>element</find>
       <find>List</find>
       <find>list</find>
+      <find>has</find>
+      <find>closests</find>
+      <find>moveSnake</find>
+      <find>console.l</find>
+      <find>Right</find>
+      <find>c</find>
+      <find>conso</find>
+      <find>history</find>
+      <find>console</find>
+      <find>fore</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -95,11 +102,14 @@
         <option value="$PROJECT_DIR$/resources/views/snake/snake.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/resources/views/snake/snake.blade.php" />
         <option value="$PROJECT_DIR$/webpack.mix.js" />
         <option value="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.vue" />
         <option value="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.scss" />
         <option value="$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.js" />
+        <option value="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.vue" />
+        <option value="$PROJECT_DIR$/resources/views/snake/snake.blade.php" />
+        <option value="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.scss" />
+        <option value="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js" />
       </list>
     </option>
   </component>
@@ -207,7 +217,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="974" />
+    <option name="width" value="973" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -245,6 +255,39 @@
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="img" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="snakegame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snakegame" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="snakegame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snakegame" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="snake" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="snakegame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snakegame" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vue-components" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="snakegame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snakegame" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vue-components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="snake-ai" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="snakegame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="snakegame" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vue-components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="snake-component" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -253,7 +296,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SearchEverywhereHistoryKey" value="mix&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/webpack.mix.js&#10;eb&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/routes/web.php&#10;app.js&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/resources/js/app.js&#10;mix.&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/webpack.mix.js&#10;web.&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/routes/web.php" />
+    <property name="SearchEverywhereHistoryKey" value="vue&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/resources/js/vuegen.js&#10;mix&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/webpack.mix.js&#10;eb&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/routes/web.php&#10;app.js&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/resources/js/app.js&#10;mix.&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/webpack.mix.js&#10;web.&#9;FILE&#9;file://C:/Users/Shanjeev/Documents/Development/GeneralPurpose/snakegame/routes/web.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../MyBi/development/mybi.nl" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
@@ -263,6 +306,9 @@
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Shanjeev\Documents\Development\GeneralPurpose\snakegame\resources\vue-components\snake-ai" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Shanjeev\Documents\Development\GeneralPurpose\snakegame\resources\img" />
     </key>
@@ -289,15 +335,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550668954265</updated>
-      <workItem from="1550668955593" duration="79136000" />
+      <workItem from="1550668955593" duration="129616000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79136000" />
+    <option name="totallyTimeSpent" value="129616000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="973" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -307,7 +353,7 @@
       <window_info anchor="bottom" id="Version Control" order="4" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info active="true" anchor="bottom" id="Terminal" order="3" sideWeight="0.49946696" visible="true" weight="0.18921892" />
-      <window_info content_ui="combo" id="Project" order="2" weight="0.5131291" />
+      <window_info content_ui="combo" id="Project" order="2" weight="0.51259583" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="bottom" id="Find" order="6" />
@@ -327,6 +373,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/node_modules/@muntrue/generateimports/index.js">
@@ -376,20 +427,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/vuegen.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="15322" column="17" selection-start-line="15322" selection-start-column="17" selection-end-line="15322" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/snake/snake.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -407,6 +448,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="174" column="32" lean-forward="true" selection-start-line="174" selection-start-column="32" selection-end-line="174" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -414,10 +462,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-component/snake-component.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/snake/snake.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3332">
-          <caret line="196" column="2" lean-forward="true" selection-start-line="196" selection-start-column="2" selection-end-line="196" selection-end-column="2" />
+        <state relative-caret-position="204">
+          <caret line="12" column="4" selection-start-line="12" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/vuegen.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2640">
+          <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
         </state>
       </provider>
     </entry>
