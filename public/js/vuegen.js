@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       pressed_key: "",
-      arena_width: 25,
+      arena_width: 15,
       value: null,
       coordinate_x: null,
       coordinate_y: null,
@@ -164,6 +164,7 @@ __webpack_require__.r(__webpack_exports__);
       if (snakeCurrently.classList.contains("snake_skin")) {
         this.pressed_key = "snak heaven";
         this.dead_snake = true;
+        debugger;
       } //snake eating
 
 
@@ -182,6 +183,13 @@ __webpack_require__.r(__webpack_exports__);
       this.current_snake_length = snake_tail;
       var snakeTailCurrently = document.getElementById(snake_tail[0]);
       snakeCurrently.classList.add("snake_skin");
+      snakeCurrently.classList.add("snake_skull");
+      var snake_body = this.snake_history[this.snake_history.length - 2];
+
+      if (snake_body != null) {
+        var snake_neck = document.getElementById(snake_body);
+        snake_neck.classList.remove("snake_skull");
+      }
 
       if (this.snake_history.length > this.snake_length) {
         snakeTailCurrently.classList.remove("snake_skin");
@@ -239,75 +247,47 @@ __webpack_require__.r(__webpack_exports__);
             down_block = true;
           } else if (location === coordinate_x + "." + (coordinate_y - 1)) {
             up_block = true;
-          } else if (location === coordinate_x + 1 + "." + coordinate_y) {
-            console.log("here3");
-            left_block = true;
           } else if (location === coordinate_x - 1 + "." + coordinate_y) {
+            left_block = true;
+          } else if (location === coordinate_x + 1 + "." + coordinate_y) {
             right_block = true;
           }
         });
 
         if (_this.input_set === false) ;
         {
-          console.log(down_block, up_block, left_block, right_block); //check for body
-          //check for food
-
           if (_this.coordinate_y < _this.selected_fruit[1] && _this.pressed_key !== "Up" && down_block === false) {
             _this.coordinate_y = _this.coordinate_y + 1;
             _this.pressed_key = "Down";
-
-            _this.snakeCurrentLocation();
           } else if (_this.coordinate_y > _this.selected_fruit[1] && _this.pressed_key !== "Down" && up_block === false) {
             _this.coordinate_y = _this.coordinate_y - 1;
             _this.pressed_key = "Up";
-
-            _this.snakeCurrentLocation();
           } else if (_this.coordinate_x > _this.selected_fruit[0] && _this.pressed_key !== "Right" && left_block === false) {
             _this.coordinate_x = _this.coordinate_x - 1;
             _this.pressed_key = "Left";
-
-            _this.snakeCurrentLocation();
           } else if (_this.coordinate_x < _this.selected_fruit[0] && _this.pressed_key !== "Left" && right_block === false) {
             _this.coordinate_x = _this.coordinate_x + 1;
             _this.pressed_key = "Right";
-
-            _this.snakeCurrentLocation();
           } else {
-            switch (_this.pressed_key) {
-              case "Down":
-                _this.coordinate_y = _this.coordinate_y + 1;
-
-                _this.snakeCurrentLocation();
-
-                break;
-
-              case "Up":
-                _this.coordinate_y = _this.coordinate_y - 1;
-
-                _this.snakeCurrentLocation();
-
-                break;
-
-              case "Left":
-                _this.coordinate_x = _this.coordinate_x - 1;
-
-                _this.snakeCurrentLocation();
-
-                break;
-
-              case "Right":
-                _this.coordinate_x = _this.coordinate_x + 1;
-
-                _this.snakeCurrentLocation();
-
-                break;
-            }
-
-            _this.input_set = false;
+            _this.snakeEscape(down_block, up_block, left_block, right_block);
           }
+
+          _this.snakeCurrentLocation();
+
+          _this.input_set = true;
         }
-        _this.input_set = true;
       }, this.snake_speed);
+    },
+    snakeEscape: function snakeEscape(down, up, left, right) {
+      if (down === false) {
+        this.coordinate_y = this.coordinate_y + 1;
+      } else if (up === false) {
+        this.coordinate_y = this.coordinate_y - 1;
+      } else if (left === false) {
+        this.coordinate_x = this.coordinate_x - 1;
+      } else if (right === false) {
+        this.coordinate_x = this.coordinate_x + 1;
+      }
     },
     moveSnake: function moveSnake() {
       var _this2 = this;
@@ -568,7 +548,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "div > header {\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  z-index: 5;\n}\ndiv > header > img {\n  cursor: pointer;\n}\ndiv > header > p {\n  color: red;\n}\ndiv > main {\n  display: inline-grid;\n}\ndiv > main > div {\n  background-color: grey;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n}\ndiv > main > div.snake_skin {\n  background-color: black;\n}\ndiv > main > div.snake_fruit {\n  background-color: blue;\n}", ""]);
+exports.push([module.i, "div > header {\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  z-index: 5;\n}\ndiv > header > img {\n  cursor: pointer;\n}\ndiv > header > p {\n  color: red;\n}\ndiv > main {\n  display: inline-grid;\n}\ndiv > main > div {\n  background-color: grey;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n}\ndiv > main > div.snake_skin {\n  background-color: black;\n}\ndiv > main > div.snake_skin.snake_skull {\n  background-color: #780014;\n}\ndiv > main > div.snake_fruit {\n  background-color: blue;\n}", ""]);
 
 // exports
 

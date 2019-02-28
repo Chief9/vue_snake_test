@@ -1,13 +1,13 @@
 div {
     & > header {
-        width: 100%;
-        height: 100%;
+        width:            100%;
+        height:           100%;
         background-color: rgba(0, 0, 0, 0.5);
-        position: absolute;
-        z-index: 5;
+        position:         absolute;
+        z-index:          5;
 
         & > img {
-        cursor: pointer;
+            cursor: pointer;
         }
         & > p {
             color: red;
@@ -24,6 +24,10 @@ div {
 
             &.snake_skin {
                 background-color: black;
+
+                &.snake_skull {
+                    background-color: #780014
+                }
             }
 
             &.snake_fruit {
