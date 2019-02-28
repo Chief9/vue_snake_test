@@ -199,11 +199,13 @@ export default {
                     {
                         up_block = true;
                     }
-                    else if ( location === (coordinate_x - 1) + "." + coordinate_y )
+                    else if ( location === (coordinate_x + 1) + "." + coordinate_y )
                     {
+                        console.log("here3")
+
                         left_block = true;
                     }
-                    else if ( location === (coordinate_x + 1) + "." + coordinate_y )
+                    else if ( location === (coordinate_x - 1) + "." + coordinate_y )
                     {
                         right_block = true;
                     }
@@ -211,7 +213,12 @@ export default {
 
 
                 if ( this.input_set === false ) ;
-                {                console.log(down_block, up_block, left_block, right_block);
+                {
+                    console.log(down_block, up_block, left_block, right_block);
+                    //check for body
+
+
+                    //check for food
 
                     if ( this.coordinate_y < this.selected_fruit[ 1 ] && this.pressed_key !== "Up" && down_block === false )
                     {
@@ -246,7 +253,8 @@ export default {
 
                         this.snakeCurrentLocation();
                     }
-                    else if ( this.selected_fruit.length === 0 )
+
+                    else
                     {
                         switch ( this.pressed_key )
                         {
@@ -274,32 +282,7 @@ export default {
                         }
                         this.input_set = false;
                     }
-                    else
-                    {
-                        if ( this.pressed_key === "Up" )
-                        {
-                            this.coordinate_y = this.coordinate_y - 1;
-                            this.input_set    = false;
 
-                        }
-                        if ( this.pressed_key === "Down" )
-                        {
-                            this.coordinate_y = this.coordinate_y + 1;
-                            this.input_set    = false;
-
-                        }
-                        if ( this.pressed_key === "Left" )
-                        {
-                            this.coordinate_x = this.coordinate_x - 1;
-                            this.input_set    = false;
-
-                        }
-                        if ( this.pressed_key === "Right" )
-                        {
-                            this.coordinate_x = this.coordinate_x + 1;
-                            this.input_set    = false;
-                        }
-                    }
                 }
                 this.input_set = true;
             }, this.snake_speed);

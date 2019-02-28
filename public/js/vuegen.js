@@ -239,16 +239,18 @@ __webpack_require__.r(__webpack_exports__);
             down_block = true;
           } else if (location === coordinate_x + "." + (coordinate_y - 1)) {
             up_block = true;
-          } else if (location === coordinate_x - 1 + "." + coordinate_y) {
-            left_block = true;
           } else if (location === coordinate_x + 1 + "." + coordinate_y) {
+            console.log("here3");
+            left_block = true;
+          } else if (location === coordinate_x - 1 + "." + coordinate_y) {
             right_block = true;
           }
         });
 
         if (_this.input_set === false) ;
         {
-          console.log(down_block, up_block, left_block, right_block);
+          console.log(down_block, up_block, left_block, right_block); //check for body
+          //check for food
 
           if (_this.coordinate_y < _this.selected_fruit[1] && _this.pressed_key !== "Up" && down_block === false) {
             _this.coordinate_y = _this.coordinate_y + 1;
@@ -270,7 +272,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.pressed_key = "Right";
 
             _this.snakeCurrentLocation();
-          } else if (_this.selected_fruit.length === 0) {
+          } else {
             switch (_this.pressed_key) {
               case "Down":
                 _this.coordinate_y = _this.coordinate_y + 1;
@@ -302,26 +304,6 @@ __webpack_require__.r(__webpack_exports__);
             }
 
             _this.input_set = false;
-          } else {
-            if (_this.pressed_key === "Up") {
-              _this.coordinate_y = _this.coordinate_y - 1;
-              _this.input_set = false;
-            }
-
-            if (_this.pressed_key === "Down") {
-              _this.coordinate_y = _this.coordinate_y + 1;
-              _this.input_set = false;
-            }
-
-            if (_this.pressed_key === "Left") {
-              _this.coordinate_x = _this.coordinate_x - 1;
-              _this.input_set = false;
-            }
-
-            if (_this.pressed_key === "Right") {
-              _this.coordinate_x = _this.coordinate_x + 1;
-              _this.input_set = false;
-            }
           }
         }
         _this.input_set = true;

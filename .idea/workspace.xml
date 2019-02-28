@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="804452a0-47ce-423d-bca6-ef9ff54e615d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/vuegen.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/vuegen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/vuegen.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/vuegen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/snake/snake.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/snake/snake.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,8 +21,8 @@
       <file leaf-file-name="snake-ai.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2640">
-              <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
+            <state relative-caret-position="85">
+              <caret line="255" column="19" selection-start-line="255" selection-start-column="19" selection-end-line="255" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -80,8 +76,8 @@
       <find>c</find>
       <find>conso</find>
       <find>history</find>
-      <find>console</find>
       <find>fore</find>
+      <find>console</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -335,12 +331,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550668954265</updated>
-      <workItem from="1550668955593" duration="129616000" />
+      <workItem from="1550668955593" duration="133571000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129616000" />
+    <option name="totallyTimeSpent" value="133571000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="973" height="1047" extended-state="0" />
@@ -472,13 +468,6 @@
     <entry file="file://$PROJECT_DIR$/resources/js/vuegen.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -486,10 +475,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/vue-components/snake-ai/snake-ai.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2640">
-          <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
+        <state relative-caret-position="85">
+          <caret line="255" column="19" selection-start-line="255" selection-start-column="19" selection-end-line="255" selection-end-column="19" />
         </state>
       </provider>
     </entry>
