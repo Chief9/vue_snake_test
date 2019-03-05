@@ -4,18 +4,18 @@ export default {
     {
         return {
             pressed_key: "",
-            arena_width: 15,
+            arena_width: 25,
             value: null,
             coordinate_x: null,
             coordinate_y: null,
             snake_head_location: null,
             snake_skin: false,
-            snake_length: 5,
+            snake_length: 1,
             snake_history: [],
             dead_snake: false,
             fruit_amount: 2,
             current_fruit: null,
-            snake_speed: 100,
+            snake_speed: 5,
             input_set: false,
             fruit_location: [],
             selected_fruit: null,
@@ -203,21 +203,24 @@ export default {
                 var coordinate_x = this.coordinate_x;
                 var coordinate_y = this.coordinate_y;
 
+                var arena_width      = this.arena_width;
+                var current_location = this.snake_head_location;
+
                 this.current_snake_length.forEach(function (location)
                 {
-                    if ( location === (coordinate_x + "." + (coordinate_y + 1)) )
+                    if ( (location === (coordinate_x + "." + (coordinate_y + 1))) || ((current_location === (coordinate_x + "." + arena_width)) && (location === (coordinate_x + "." + 1))) )
                     {
                         down_block = true;
                     }
-                    else if ( location === (coordinate_x + "." + (coordinate_y - 1)) )
+                    else if ( location === (coordinate_x + "." + (coordinate_y - 1)) || ((current_location === (coordinate_x + "." + 1)) && (location === (coordinate_x + "." + arena_width))) )
                     {
                         up_block = true;
                     }
-                    else if ( location === (coordinate_x - 1) + "." + coordinate_y )
+                    else if ( location === (coordinate_x - 1) + "." + coordinate_y || ((current_location === (1 + "." + coordinate_y)) && (location === (arena_width + "." + coordinate_y))) )
                     {
                         left_block = true;
                     }
-                    else if ( location === (coordinate_x + 1) + "." + coordinate_y )
+                    else if ( location === (coordinate_x + 1) + "." + coordinate_y || ((current_location === ((arena_width + "." + coordinate_y))) && (location === (1 + "." + coordinate_y))) )
                     {
                         right_block = true;
                     }
@@ -263,8 +266,10 @@ export default {
 
         snakeEscape: function (down, up, left, right)
         {
+            this.snakeClairvoyance(down, up, left, right);
+
             if ( down === false )
-            {
+            { 
                 this.coordinate_y = this.coordinate_y + 1;
             }
             else if ( up === false )
@@ -278,6 +283,189 @@ export default {
             else if ( right === false )
             {
                 this.coordinate_x = this.coordinate_x + 1;
+            }
+        },
+
+        snakeClairvoyance: function (down, up, left, right)
+        {
+            var snake_length = this.current_snake_length;
+
+            var coordinate_x = this.coordinate_x;
+            var coordinate_y = this.coordinate_y;
+            var snake_head   = this.snake_head_location;
+            var arena_width  = this.arena_width;
+
+            if ( down === true && up === true )
+            {
+             /*   if ( this.pressed_key === "down" )
+                {
+                    let free_block_left  = 0;
+                    let free_block_right = 0;
+
+                    loop_down_right:
+                        for ( let y = coordinate_y; y < (arena_width + 1); y++ )
+                        {
+                            if ( snake_length.includes(coordinate_x + "." + y) )
+                            {
+                                for ( let x = coordinate_x; x < (arena_width + 1); x++ )
+                                {
+                                    if ( snake_length.includes(x + "." + y) && ((x + "." + y) !== this.coordinate_x + "." + y) )
+                                    {
+                                        continue loop_down_right;
+                                    }
+
+                                    else
+                                    {
+                                        free_block_right++;
+                                    }
+                                }
+                            }
+                        }
+
+                    loop_down_left:
+                        for ( let n = coordinate_y; n < (arena_width + 1); n++ )
+                        {
+                            if ( snake_length.includes(coordinate_x + "." + n) )
+                            {
+                                for ( let i = coordinate_x; i > 0; i-- )
+                                {
+                                    if ( snake_length.includes(i + "." + n) && ((i + "." + n) !== this.coordinate_x + "." + i) )
+                                    {
+                                        continue loop_down_left;
+                                    }
+
+                                    else
+                                    {
+                                        free_block_left++;
+                                    }
+                                }
+                            }
+                        }
+
+                    if ( free_block_left < this.snake_length )
+                    {
+                        return left === true;
+                    }
+                    else if ( free_block_right < this.snake_length )
+                    {
+                        return right === true;
+                    }
+                    debugger
+                }*/
+            }
+            else if ( right === true && left === true )
+            {
+                if ( this.pressed_key === "Left" )
+                {
+                    let free_block_down = 0;
+                    let free_block_up   = 0;
+
+                    loop_left_down:
+                        for (let x = coordinate_x; x < (arena_width + 1); x++ )
+                        {
+                            if ( snake_length.includes(x + "." + coordinate_y) )
+                            {
+                                for (let y = coordinate_y; y < (arena_width + 1); y++ )
+                                {
+                                    if ( snake_length.includes(x + "." + y) && ((x + "." + y) !== x + "." + this.coordinate_y) )
+                                    {
+
+                                        continue loop_left_down;
+                                    }
+
+                                    else
+                                    {
+                                        free_block_down++;
+                                    }
+                                }
+                            }
+                        }
+
+                    loop_left_up:
+                        for (let n = coordinate_x; n < (arena_width + 1); n++ )
+                        {
+                            if ( snake_length.includes(n + "." + coordinate_y) )
+                            {
+                                for (let i = coordinate_y; i > 0; i-- )
+                                {
+                                    if ( snake_length.includes(n + "." + i) && ((n + "." + i) !== n + "." + this.coordinate_y) )
+                                    {
+                                        continue loop_left_up;
+                                    }
+
+                                    else
+                                    {
+                                        free_block_up++;
+                                    }
+                                }
+                            }
+                        }
+
+                    if ( free_block_down < this.snake_length )
+                    {
+                        return down === true;
+                    }
+                    else if ( free_block_up < this.snake_length )
+                    {
+                        return up === true;
+                    }
+
+                }
+                if ( this.pressed_key === "Right" )
+                {
+                    let free_block_down = 0;
+                    let free_block_up   = 0;
+
+                    loop_right_down:
+                        for (let x = coordinate_x; x > 0; x-- )
+                        {
+                            if ( snake_length.includes(x + "." + coordinate_y) )
+                            {
+                                for (let y = coordinate_y; y < (arena_width + 1); y++ )
+                                {
+                                    if ( snake_length.includes(x + "." + y) && ((x + "." + y) !== x + "." + this.coordinate_y) )
+                                    {
+
+                                        continue loop_right_down;
+                                    }
+
+                                    else
+                                    {
+                                        free_block_down++;
+                                    }
+                                }
+                            }
+                        }
+
+                    loop_right_up:
+                        for (let n = coordinate_x; n > 0; n-- )
+                        {
+                            if ( snake_length.includes(n + "." + coordinate_y) )
+                            {
+                                for (let i = coordinate_y; i > 0; i-- )
+                                {
+                                    if ( snake_length.includes(n + "." + i) && ((n + "." + i) !== n + "." + this.coordinate_y) )
+                                    {
+                                        continue loop_right_up;
+                                    }
+
+                                    else
+                                    {
+                                        free_block_up++;
+                                    }
+                                }
+                            }
+                        }
+
+                    if ( free_block_down < this.snake_length )
+                    {
+                        return down === true;
+                    }
+                    else if ( free_block_up < this.snake_length )
+                    {
+                        return up === true;
+                    }
+                }
             }
         },
 
